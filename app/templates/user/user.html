@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Flasky - {{ user.username }}{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <div class="profile-header">
+        <h1>{{ user.username }}</h1>
+        {% if user.name or user.location %}
+        <p>
+            {% if user.name %}{{ user.name }}<br>{% endif %}
+            {% if user.location %}
+                From <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
+            {% endif %}
+        </p>
+        {% endif %}
+        {% if current_user.is_administrator() %}
+        <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        {% endif %}
+        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+
+        <p>
+            {% if user == current_user %}
+            <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">Edit Profile</a>
+            {% endif %}
+        </p>
+    </div>
+</div>
+<h3>Books by {{ user.username }}</h3>
+<div class="books col-sm-12">
+    {% for book in books %}
+    <div class="col-sm-6">
+        <div class="book">
+            <div class="book-name"><h3>{{ book.title }}</h3></div>
+            <div class="book-date">Created: {{ book.publishedDate }}</div>
+            <div class="book-author">Created by: {{ book.author }}</a></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,1 @@
+$('div.book-averageRating').raty({readOnly: true, path: '/static/images'});
