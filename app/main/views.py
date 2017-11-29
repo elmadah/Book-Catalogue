@@ -107,9 +107,11 @@ def books():
 @main.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
+    form = SearchBook()
+
     books = Book.query.order_by(Book.publishedDate.desc()).all()
 
-    return render_template('index.html', books=books)
+    return render_template('index.html', books=books, form=form)
 
 @main.route('/user/<username>')
 def user(username):
