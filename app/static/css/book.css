@@ -24,3 +24,21 @@ body.page-book .navbar {
   display: inline-block;
   margin-right: 40px;
 }
+
+.book-info a.btn {
+  border: 0;
+  background: #d9dee2;
+  color: #333;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.book-info a.btn.btn-unsave {
+  background: #ffebeb;
+  margin-top: 10px;
+}
+.book-info a.btn.btn-unsave:hover {
+  background: #fdb5b5;
+}
+.book-info a.btn:hover {
+  background: #ccd6e0;
+}

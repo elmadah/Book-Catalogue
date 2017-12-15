@@ -38,12 +38,12 @@ def create_app(config_name):
     migrate = Migrate(app, db)
     login_manager.init_app(app)
     login_manager.login_message = "You must be logged in to access this page."
-    login_manager.login_view = "auth.login"
+    login_manager.login_view = "user.login"
 
     from app import models
 
-    from .user import user as auth_blueprint
-    app.register_blueprint(auth_blueprint)
+    from .user import user as user_blueprint
+    app.register_blueprint(user_blueprint)
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)

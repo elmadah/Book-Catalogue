@@ -38,7 +38,7 @@
     {% for row in users %}
         <div class="explore-users col-sm-12">
             <img class="img-rounded" src="/static/img/{{ row.profile_image}}" width="40px" />
-            <div class="explore-user"><b><a href="{{ url_for('main.user', username=row.username) }}">{{ row.username }}</a></b></div>
+            <div class="explore-user"><b><a href="{{ url_for('user.user', username=row.username) }}">{{ row.username }}</a></b></div>
             <span>Joined <time class="timeago" datetime="{{ row.member_since }}">{{ row.member_since }}</time></span>
         </div>
     {% endfor %}

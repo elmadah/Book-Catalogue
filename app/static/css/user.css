@@ -2,6 +2,10 @@ body.page-user-profile .navbar {
   background: #8ED1B7;
 }
 
+p.user-about {
+  margin-top: 20px;
+}
+
 .explore-book {
   width: 100%;
   margin-bottom: 60px;

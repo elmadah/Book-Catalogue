@@ -122,3 +122,11 @@ body.page-login .navbar,
 body.page-register .navbar{
   background: #8ED1B7;
 }
+
+body.page-404 .navbar {
+  background-color: #b4d18e;
+}
+
+body.page-user-edit .navbar {
+  background: #8ED1B7;
+}

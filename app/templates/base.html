@@ -33,7 +33,7 @@
 
             <form class="navbar-form navbar-left" role="search" action="{{ url_for('main.books_search') }}" method=post>
               <div class="form-group">
-                <input class="form-control" id="isbn" name="isbn" type="text" placeholder="Search ISBN">
+                <input class="form-control" id="isbn" name="isbn" type="text" placeholder="Search ISBN" required="true">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
               </div>
               <button type="submit" id="submit" name="submit" class=""><img src="/static/images/search.svg" /></button>
@@ -47,11 +47,11 @@
                         {{ current_user.username }} <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
-                        <li><a href="{{ url_for('main.edit_profile') }}">Edit Profile</a></li>
-                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                        <li><a href="{{ url_for('user.user', username=current_user.username) }}">Profile</a></li>
+                        <li><a href="{{ url_for('user.edit_profile') }}">Edit Profile</a></li>
+                        <li><a href="{{ url_for('user.logout') }}">Log Out</a></li>
                         {% else %}
-                        <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                        <li><a href="{{ url_for('user.login') }}">Log In</a></li>
                         {% endif %}
                     </ul>
                 </li>

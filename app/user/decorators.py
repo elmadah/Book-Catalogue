@@ -1,7 +1,6 @@
 from functools import wraps
 from flask import abort
 from flask_login import current_user
-from flask_principal import identity_loaded, RoleNeed, UserNeed
 from ..models import Permission
 
 

@@ -2,11 +2,11 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Book Catalogue - Edit Profile{% endblock %}
+{% block body_attribs %} class="page-user-edit"{% endblock body_attribs %}
+{% block page_title %}<h1>Edit Profile</h1>{% endblock page_title %}
 
 {% block page_content %}
-<div class="page-header">
-    <h1>Edit Profile</h1>
-</div>
+
 <div class="col-md-4">
     {{ wtf.quick_form(form) }}
 </div>
