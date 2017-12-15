@@ -57,7 +57,7 @@ def books_search():
                 db.session.add(book)
                 db.session.commit()
 
-                return redirect(url_for('.index'))
+                return redirect(url_for('.books'))
                 flash('You have successfully added a new Book.')
 
         except:
