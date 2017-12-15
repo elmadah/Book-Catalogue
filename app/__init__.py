@@ -20,7 +20,7 @@ csrf = CsrfProtect()
 photos = UploadSet('photos', IMAGES)
 
 def create_app(config_name):
-    config_name = 'development'
+    config_name = 'production'
 
     app = Flask(__name__)
     app.config.from_object(config[config_name])
