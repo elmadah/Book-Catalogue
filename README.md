@@ -70,7 +70,7 @@ $ flask db upgrade
 * Email: admin@example.com
 * Password: 123456
 * User: Admin
-
+---
 * Email: user1@example.com
 * Passowrd: 123456
 * User: Bill Gates
