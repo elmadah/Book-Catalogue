@@ -1,0 +1,56 @@
+body.page-books .navbar {
+  background: #E9A7C6;
+}
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-top: 40px;
+}
+.book {
+  width: 100%;
+  margin-bottom: 60px;
+  clear: both;
+  float: left;
+  background: #FFFFFF;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.17);
+  border-radius: 3px;
+  padding: 25px;
+}
+.book .book-cover {
+  margin-right: 20px;
+}
+.book .book-cover img {
+  box-shadow: 0 4px 7px 0 rgba(0,0,0,0.24);
+}
+.book-content {
+  overflow: auto;
+}
+.book-subtitle {
+  margin: 10px 0;
+}
+.book .book-name h3 a {
+  color: #333333;
+}
+.book .book-author {
+  font-size: 18px;
+  color: rgba(51,51,51,0.50);
+}
+.book a.btn {
+  border: 0;
+  background: #f5f7f9;
+  color: #333;
+  font-weight: 500;
+}
+.book a.btn.btn-unsave {
+  background: #ffebeb;
+}
+.book a.btn.btn-unsave:hover {
+  background: #fdb5b5;
+}
+.book a.btn:hover {
+  background: #ccd6e0;
+}
+.book .book-averageRating {
+  margin-bottom: 10px;
+}

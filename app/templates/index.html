@@ -1,15 +1,49 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}Book Catalogue - Homepage{% endblock %}
+{% block body_attribs %} class="page-homepage"{% endblock body_attribs %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
 
 {% block page_content %}
 
 <div>
-    {{ wtf.quick_form(form) }}
+    <div class="row main-content">
+        <div class="col-sm-8">
+            <h1>Enjoy reading your favorite books</h1>
+            <h4>Tell us what titles or genres you’ve enjoyed in the past, and we’ll give you surprisingly insightful recommendations.</h4>
+        </div>
+        <div class="col-sm-4">
+            {% if current_user.is_authenticated %}
+                <h2>Hi {{ current_user.name }}!</h2>
+            {% else %}
+                {{ wtf.quick_form(form) }}
+            {% endif %}
+        </div>
+
+        <div class="col-sm-6">
+            <h2>Recently added Books</h2>
+            <div class="carousel">
+                <div class="carousel-content">
+                {% for book in books %}
+                    <div class="carousel-item">
+                       <div class="book-cover"><a href="{{ url_for('.book', id=book.id) }}"><img src="{{ book.thumbnail}}"  /></a></div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+
+    </div>
 </div>
 {% endblock %}
-
 {% block scripts %}
 {{ super() }}
 {% endblock %}

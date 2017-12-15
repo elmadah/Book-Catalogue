@@ -1,3 +1,124 @@
+body {
+  -moz-font-feature-settings: 'kern';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.52947;
+  font-weight: 400;
+  letter-spacing: -0.021em;
+  background-color: #F6F6F6;
+  color: #333333;
+  font-style: normal;
+    padding-bottom: 100px;
+}
+
+
+/*Typography*/
+h1 {
+  font-size: 48px;
+  line-height: 1.04167;
+  font-weight: 500;
+  letter-spacing: 0.006em;
+}
+
 .container {
     max-width: 970px;
+}
+
+
+/*Navbar*/
+.navbar {
+  padding-top: 20px;
+  border: 0;
+  border-radius: 0;
+}
+ul.nav.navbar-nav li a {
+  font-size: 14px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.navbar h1 {
+  margin-bottom: 30px;
+  color: #fff;
+}
+a.navbar-brand {
+  padding: 10px 15px;
+  margin-right: 20px;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  background-color: #ffffff30;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+  background: #ffffff38;
+}
+.navbar-nav>li>.dropdown-menu {
+  background: #333;
+}
+.navbar-nav li.dropdown img {
+  border: 1px solid #ffffff75;
+}
+
+
+
+.navbar input#isbn {
+  background: rgba(255,255,255,0.34);
+  border-radius: 4px;
+  box-shadow: 0 0 0;
+  border: 0;
+  width: 250px;
+  margin-left: 30px;
+}
+.navbar input#isbn::-webkit-input-placeholder {
+  color: white;
+}
+.navbar #submit {
+  border: 0;
+  background: transparent;
+}
+
+
+h2.block-title {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 50px;
+  font-weight: 400;
+}
+
+.img-rounded {
+  border-radius: 4px;
+}
+
+
+/*books*/
+.book-cover {
+  float: left;
+  margin-right: 40px;
+}
+
+.books-all {
+  margin-top: 100px;
+}
+
+
+/*User Profile*/
+.profile-photo {
+  float: left;
+  margin-right: 15px;
+}
+
+
+body.page-book-edit .navbar {
+  background: #8981D8;
+}
+.page-book-edit .col-sm-12 .form-group {
+  width: 50%;
+  float: left;
+  padding-right: 40px;
+}
+
+body.page-login .navbar,
+body.page-register .navbar{
+  background: #8ED1B7;
 }

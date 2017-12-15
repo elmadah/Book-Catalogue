@@ -46,10 +46,8 @@ class Role(db.Model):
 class UserBooks(db.Model):
     __tablename__ = 'user_books'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
-                            primary_key=True, default=None)
-    book_id = db.Column(db.Integer, db.ForeignKey('books.id'),
-                            primary_key=True, default=None)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), default=None)
+    book_id = db.Column(db.Integer, db.ForeignKey('books.id'), default=None)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 class User(UserMixin, db.Model):
@@ -61,6 +59,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     name = db.Column(db.String(64))
     about = db.Column(db.Text())
+    profile_image = db.Column(db.String(200), default="user.svg", nullable=True)
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     books = db.relationship('UserBooks',
                              backref='user',
@@ -84,6 +83,10 @@ class User(UserMixin, db.Model):
 
     def is_administrator(self):
         return self.can(Permission.ADMINISTER)
+
+    def saved_book(self, user, book_id):
+        return self.books.filter_by(
+            user_id=user.id, book_id=book_id).first() is not None
 
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permissions):
@@ -112,7 +115,7 @@ class Book(db.Model):
     categories = db.Column(db.String(64))
     thumbnail = db.Column(db.String(200), default=None, nullable=True)
     averageRating = db.Column(db.INTEGER)
-
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     users = db.relationship('UserBooks', backref='book', lazy='dynamic')
 
     def __repr__(self):

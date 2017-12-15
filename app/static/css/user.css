@@ -1,0 +1,65 @@
+body.page-user-profile .navbar {
+  background: #8ED1B7;
+}
+
+.explore-book {
+  width: 100%;
+  margin-bottom: 60px;
+  clear: both;
+  float: left;
+  background: #FFFFFF;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.17);
+  border-radius: 3px;
+  padding: 25px;
+}
+.explore-book .book-cover img {
+  box-shadow: 0 4px 7px 0 rgba(0,0,0,0.24);
+}
+.explore-content {
+  overflow: auto;
+}
+.explore-header img {
+  float: left;
+  margin-right: 10px;
+}
+.explore-book .book-cover {
+  margin-top: -40px;
+}
+.explore-header span {
+  color: rgba(51, 51, 51, 0.5);
+}
+.explore-header time.timeago {
+  color: rgba(51, 51, 51, 0.5);
+  font-size: 14px;
+  display: inherit;
+  margin-top: -5px;
+}
+.explore-book .book-name h3 {
+  margin-bottom: 0;
+}
+.explore-book .book-name h3 a {
+  color: #333333;
+}
+.explore-book .book-author {
+  font-size: 18px;
+  color: rgba(51,51,51,0.50);
+}
+
+/*User Books*/
+.user-books .col-sm-12 {
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.user-books .book-cover {
+  margin-right: 20px;
+  box-shadow: 0 4px 7px 0 rgba(0,0,0,0.24);
+}
+.user-books .book-cover
+ img {
+  max-height: 140px;
+}
+.user-books span {
+  color: rgba(51, 51, 51, 0.5);
+  font-size: 14px;
+}

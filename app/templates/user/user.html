@@ -1,41 +1,71 @@
 {% extends "base.html" %}
 
-{% block title %}Flasky - {{ user.username }}{% endblock %}
+{% block title %}Book Catalogue - {{ user.username }} Profile{% endblock %}
+{% block body_attribs %} class="page-user-profile"{% endblock body_attribs %}
+{% block page_title %}<h1>{{ user.username }}</h1>{% endblock page_title %}
+
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/user.css') }}">
+{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
     <div class="profile-header">
-        <h1>{{ user.username }}</h1>
-        {% if user.name or user.location %}
-        <p>
-            {% if user.name %}{{ user.name }}<br>{% endif %}
-            {% if user.location %}
-                From <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
-            {% endif %}
-        </p>
-        {% endif %}
-        {% if current_user.is_administrator() %}
+        <img class="img-rounded profile-photo" src="/static/img/{{ user.profile_image}}" width="100px" />
+        <h1>{% if user.name %}{{ user.name }}{% else %}{{ user.username }}{% endif %}</h1>
         <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
-        {% endif %}
-        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-
-        <p>
-            {% if user == current_user %}
-            <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">Edit Profile</a>
-            {% endif %}
-        </p>
+        {% if user.about %}<p>{{ user.about }}</p>{% endif %}
     </div>
 </div>
-<h3>Books by {{ user.username }}</h3>
-<div class="books col-sm-12">
-    {% for book in books %}
-    <div class="col-sm-6">
-        <div class="book">
-            <div class="book-name"><h3>{{ book.title }}</h3></div>
-            <div class="book-date">Created: {{ book.publishedDate }}</div>
-            <div class="book-author">Created by: {{ book.author }}</a></div>
+<div class="col-sm-8">
+    <h2 class="block-title">{{ user.username }}'s Recent Updates</h2>
+
+    {% for row in user_books %}
+    <div class="explore-book">
+        <div class="book-cover"><img src="{{ row.book.thumbnail }}"  /></div>
+        <div class="explore-content">
+            <div class="explore-header">
+                <img class="img-rounded" src="/static/img/{{ row.user.profile_image}}" width="40px" />
+                <div class="explore-header-info"><b>{{ row.user.name}}</b> <span>started reading</span></div>
+                <time class="timeago" datetime="{{ row.timestamp }}">{{ row.timestamp }}</time>
+            </div>
+
+            <div class="book-name"><h3><a href="{{ url_for('.book', id=row.book.id) }}">{{ row.book.title }}</a></h3></div>
+            <div class="book-author">by {{ row.book.author }}</a></div>
+            <div class="book-averageRating" data-score="{{ row.book.averageRating }}" data-score-name="{{ row.book.averageRating }}"></div>
         </div>
     </div>
     {% endfor %}
+
 </div>
+
+<div class="col-sm-4 user-books">
+    <h2 class="block-title">{{ user.username }}'s books</h2>
+    {% if books %}
+    <div class="books">
+    {% for book in books %}
+    <div class="col-sm-12">
+        <div class="book">
+            <div class="book-cover"><img src="{{ book.book.thumbnail }}"  /></div>
+            <div class="book-name"><b>{{ book.book.title }}</b></div>
+            <span>Published {{ book.book.publishedDate }}</span>
+            <span>By {{ book.book.author }}</a></span>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    {% else %}
+        <p>{{ user.username }} currently doesn't have books saved.</p>
+        {% if current_user.is_authenticated %}
+            <p>Add your first book by saving some of the suggested books.</p>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+
+
 {% endblock %}

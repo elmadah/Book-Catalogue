@@ -1,0 +1,26 @@
+body.page-book .navbar {
+  background: #FFC697;
+}
+
+.book-cover img {
+  background: #FFFFFF;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.17);
+  border-radius: 3px;
+  border: 8px solid #fff;
+}
+.book-info {
+  overflow: auto;
+}
+.book-author {
+  font-size: 18px;
+  color: rgba(51,51,51,0.50);
+}
+.book-description {
+  margin: 10px 0;
+  font-size: 18px;
+  color: rgba(51, 51, 51, 0.7);
+}
+.book-fields span {
+  display: inline-block;
+  margin-right: 40px;
+}

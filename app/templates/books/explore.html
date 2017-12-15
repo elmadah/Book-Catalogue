@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Book Catalogue - Explore{% endblock %}
+{% block body_attribs %} class="page-explore"{% endblock body_attribs %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/explore.css') }}">
+{% endblock %}
+
+{% block page_title %}<h1>Explore</h1>{% endblock page_title %}
+
+{% block page_content %}
+
+<div class="col-sm-8">
+    <h2 class="block-title">Recent Activities</h2>
+    {% for row in user_books %}
+    <div class="explore-book">
+        <div class="book-cover"><img src="{{ row.book.thumbnail }}"  /></div>
+        <div class="explore-content">
+            <div class="explore-header">
+                <img class="img-rounded" src="/static/img/{{ row.user.profile_image}}" width="40px" />
+                <div class="explore-header-info"><b>{{ row.user.name}}</b> <span>started reading</span></div>
+                <time class="timeago" datetime="{{ row.timestamp }}">{{ row.timestamp }}</time>
+            </div>
+
+            <div class="book-name"><h3><a href="{{ url_for('.book', id=row.book.id) }}">{{ row.book.title }}</a></h3></div>
+            <div class="book-author">by {{ row.book.author }}</a></div>
+            <div class="book-averageRating" data-score="{{ row.book.averageRating }}" data-score-name="{{ row.book.averageRating }}"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="col-sm-4">
+    <h2 class="block-title">Meet People</h2>
+    {% for row in users %}
+        <div class="explore-users col-sm-12">
+            <img class="img-rounded" src="/static/img/{{ row.profile_image}}" width="40px" />
+            <div class="explore-user"><b><a href="{{ url_for('main.user', username=row.username) }}">{{ row.username }}</a></b></div>
+            <span>Joined <time class="timeago" datetime="{{ row.member_since }}">{{ row.member_since }}</time></span>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

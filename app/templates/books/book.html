@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 
-{% block title %}Flasky - Post{% endblock %}
+{% block title %}Book Catalogue - Book{% endblock %}
+{% block page_title %}<h1>{{ book.title }}</h1>{% endblock page_title %}
+{% block body_attribs %} class="page-book"{% endblock body_attribs %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/book.css') }}">
+{% endblock %}
 
 {% block page_content %}
     <div class="row">
-        <div class="col-sm-6 book-photo">
-            <div class="book-cover"><img src="{{ book.thumbnail}}"  /></div>
-
-        </div>
-        <div class="col-sm-6 book-details">
-            <div class="book-name"><h1>{{ book.title }}</h1></div>
+        <div class="book-cover"><img src="{{ book.thumbnail}}"  /></div>
+        <div class="book-info">
+            <div class="book-name"><h3>{{ book.subtitle }}</h3></div>
             <div class="book-author">By {{ book.author }}</a></div>
             <div class="book-averageRating" data-score="{{ book.averageRating }}" data-score-name="{{ book.averageRating }}"></div>
-            <div class="book-author">{{ book.description }}</a></div>
-            <div class="col-sm-6">
-                <div class="book-publisher"><label>Publisher</label> {{ book.publisher }}</a></div>
-            </div>
-            <div class="col-sm-6">
-                <div class="book-isbn"><label>ISBN</label> {{ book.isbn }}</a></div>
-            </div>
+            <div class="book-description">{{ book.description }}</a></div>
+                <div class="book-fields">
+                    <span><label>Publisher</label> {{ book.publisher }}</a></span>
+                    <span><label>Categories</label> {{ book.categories }}</a></span>
+                    <span><label>ISBN</label> {{ book.isbn }}</a></span>
+                </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row books-all">
+        <h2 class="block-title">Recommended books</h2>
         {% for book in books %}
             <div class="col-sm-2">
                 <div class="book">
-                    <div class="book-cover"><img src="{{ book.thumbnail}}"  /></div>
-                    <div class="book-name"><strong><a href="{{ url_for('.book', id=book.id) }}">{{ book.title }}</a></strong></div>
-                    <div class="book-author">{{ book.author }}</a></div>
-                    <div class="book-date">{{ book.publishedDate }}</div>
-                    <a href="{{ url_for('.books_save', id=book.id) }}" class="btn btn-primary">Save Book</a>
+                    <div class="book-cover"><a href="{{ url_for('.book', id=book.id) }}"><img src="{{ book.thumbnail}}"  /></a></div>
                 </div>
             </div>
         {% endfor %}
