@@ -10,7 +10,7 @@ Requires the following dependencies installed:
 
 ### Activate a virtualenv
 
-Install virtualenv on your system
+Install virtualenv on your system.
 
 ```sh
 $ sudo pip install virtualenv
@@ -24,7 +24,7 @@ $ . ENV/bin/activate
 $ pip install -r requirements.txt
 ```
 
-Installs the requirements recursively by following command
+Install the requirements by following command.
 
 ```sh
 $ pip install -r requirements.txt
@@ -67,10 +67,10 @@ $ flask db upgrade
 
 ## Test Users
 
-Email: admin@example.com
-Password: 123456
-User: Admin
+* Email: admin@example.com
+* Password: 123456
+* User: Admin
 
-Email: user1@example.com
-Passowrd: 123456
-User: Bill Gates
+* Email: user1@example.com
+* Passowrd: 123456
+* User: Bill Gates
