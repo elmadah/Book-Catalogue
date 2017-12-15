@@ -2,3 +2,4 @@ ENV
 *.pyc
 migrations
 .idea
+.DS_Store
