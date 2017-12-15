@@ -1,5 +1,7 @@
 # Book Catalogue
 
+### [Demo](http://elmadah.pythonanywhere.com)
+
 Requires the following dependencies installed:
 
 * Python 2.7
@@ -21,7 +23,6 @@ Once you have virtualenv installed, just fire up a shell and create your own env
 $ cd IS211_Final/
 $ virtualenv ENV
 $ . ENV/bin/activate
-$ pip install -r requirements.txt
 ```
 
 Install the requirements by following command.
